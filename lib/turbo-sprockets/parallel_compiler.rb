@@ -13,7 +13,7 @@ module TurboSprockets
 
     def compile(*args)
       logger.warn "Precompiling with #{worker_count} workers"
-
+   
       time = Benchmark.measure do
         results = compile_in_parallel(find_precompile_paths(*args))
         puts 'XXX'
@@ -32,7 +32,13 @@ module TurboSprockets
     end
 
     def compile_in_parallel(paths)
-      
+      arr = []
+      while(true) do
+        arr.push(paths.pop(200))
+        if paths.count <= 0
+          return
+        end
+      end
         binding.pry
       flatten_precomp_results(
         Parallel.map(paths) do |path|
