@@ -1,6 +1,7 @@
 require 'benchmark'
 require 'parallel'
 require 'json'
+require 'pry'
 
 module TurboSprockets
   class ParallelCompiler
