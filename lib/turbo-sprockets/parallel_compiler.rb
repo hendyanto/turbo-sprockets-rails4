@@ -16,7 +16,7 @@ module TurboSprockets
       time = Benchmark.measure do
         results = compile_in_parallel(find_precompile_paths(*args))
         puts 'XXX'
-        puts results
+        puts find_precompile_paths(*args)
         puts 'XXX'
         write_manifest(results)
       end
