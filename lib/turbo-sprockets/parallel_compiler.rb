@@ -15,6 +15,9 @@ module TurboSprockets
 
       time = Benchmark.measure do
         results = compile_in_parallel(find_precompile_paths(*args))
+        puts 'XXX'
+        puts results
+        puts 'XXX'
         write_manifest(results)
       end
 
@@ -28,6 +31,7 @@ module TurboSprockets
     end
 
     def compile_in_parallel(paths)
+      
       flatten_precomp_results(
         Parallel.map(paths) do |path|
           manifest.compile_without_parallelism([path])
