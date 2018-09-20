@@ -36,9 +36,10 @@ module TurboSprockets
           break
         end
       end
-        binding.pry
       flatten_precomp_results(
-        Parallel.map(paths) do |path|
+        Parallel.map(arr) do |path|
+          
+        binding.pry
           manifest.compile_without_parallelism([path])
 
           { 'files' => {}, 'assets' => {} }.tap do |data|
