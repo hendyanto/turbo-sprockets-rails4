@@ -29,7 +29,7 @@ module TurboSprockets
 
     def compile_in_parallel(paths)
       flatten_precomp_results(
-        Parallel.map(paths, in_processes: worker_count) do |path|
+        Parallel.map(paths) do |path|
           manifest.compile_without_parallelism([path])
 
           { 'files' => {}, 'assets' => {} }.tap do |data|
