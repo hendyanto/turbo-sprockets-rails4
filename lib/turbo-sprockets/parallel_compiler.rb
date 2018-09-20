@@ -33,8 +33,8 @@ module TurboSprockets
 
     def compile_in_parallel(paths)
       
-      flatten_precomp_results(
         binding.pry
+      flatten_precomp_results(
         Parallel.map(paths) do |path|
           manifest.compile_without_parallelism([path])
 
