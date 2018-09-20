@@ -16,9 +16,6 @@ module TurboSprockets
    
       time = Benchmark.measure do
         results = compile_in_parallel(find_precompile_paths(*args))
-        puts 'XXX'
-        puts find_precompile_paths(*args)
-        puts 'XXX'
         write_manifest(results)
       end
 
@@ -36,7 +33,7 @@ module TurboSprockets
       while(true) do
         arr.push(paths.pop(200))
         if paths.count <= 0
-          return
+          break
         end
       end
         binding.pry
