@@ -38,12 +38,10 @@ module TurboSprockets
       end
       flatten_precomp_results(
         Parallel.map(arr) do |path|
-          
-        binding.pry
-          manifest.compile_without_parallelism([path])
+          manifest.compile_without_parallelism(path)
 
           { 'files' => {}, 'assets' => {} }.tap do |data|
-            manifest.find([path]) do |asset|
+            manifest.find(path) do |asset|
               next if File.exist?(asset.digest_path) # don't recompile
               logger.info("Writing #{asset.digest_path}")
               
